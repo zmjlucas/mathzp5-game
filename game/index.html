@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Triangular Grid Obstacle Game</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="arena-panel" aria-label="Obstacle game arena">
+        <canvas id="arena" width="900" height="900"></canvas>
+        <div class="tick-strip" aria-label="Recorded tick navigation">
+          <button id="previous-tick" type="button" class="secondary">Prev Tick</button>
+          <span id="tick-label">Tick 0 / 0</span>
+          <input id="tick-bar" type="range" min="0" max="0" value="0" />
+          <button id="next-tick" type="button" class="secondary">Next Tick</button>
+        </div>
+      </section>
+
+      <aside class="control-panel" aria-label="Game controls">
+        <div class="status-grid">
+          <div>
+            <span>Speed</span>
+            <strong id="speed">10.00 m/s</strong>
+          </div>
+          <div>
+            <span>Distance</span>
+            <strong id="distance">0.00 m</strong>
+          </div>
+          <div>
+            <span>Time</span>
+            <strong id="time">0.0 s</strong>
+          </div>
+        </div>
+
+        <div class="toolbar" aria-label="Simulation controls">
+          <button id="play" type="button">Start</button>
+          <button id="pause" type="button" class="secondary">Pause</button>
+          <button id="reset" type="button" class="secondary">Reset</button>
+        </div>
+        <div class="toolbar" aria-label="Edit history controls">
+          <button id="undo" type="button" class="secondary">Undo</button>
+          <button id="redo" type="button" class="secondary">Redo</button>
+        </div>
+
+        <section class="panel-group" aria-label="Card controls">
+          <label>
+            <span>Turn card angle <strong id="turn-angle-value">5.0 deg</strong></span>
+            <input id="turn-angle" type="range" min="0" max="5" step="0.1" value="5" />
+          </label>
+          <div class="toolbar two-up">
+            <button id="turn-left" type="button" class="turn">Turn left</button>
+            <button id="turn-right" type="button" class="turn">Turn right</button>
+          </div>
+          <div class="toolbar two-up">
+            <button id="accelerate" type="button" class="speed">Accelerate 125%</button>
+            <button id="decelerate" type="button" class="speed">Decelerate 80%</button>
+          </div>
+        </section>
+
+        <section class="panel-group" aria-label="Initial setup">
+          <label>
+            <span>Initial direction <strong id="direction-value">0 deg</strong></span>
+            <input id="direction" type="range" min="0" max="359" value="0" />
+          </label>
+          <label>
+            <span>Visible layers <strong id="layers-value">3</strong></span>
+            <input id="layers" type="range" min="1" max="7" value="3" />
+          </label>
+          <label class="checkbox">
+            <input id="rotating" type="checkbox" />
+            <span>Rotate obstacles once per 60 seconds</span>
+          </label>
+        </section>
+      </aside>
+    </main>
+
+    <script type="module" src="./src/game.mjs"></script>
+  </body>
+</html>
